@@ -1,0 +1,48 @@
+# ref : Anaconda Inc., Using conda with Travis CI, Conda documentation, https://conda.io/docs/user-guide/tasks/use-conda-with-travis-ci.html
+#       CodeChat, .travis.yml - Travis CI configuration, https://pythonhosted.org/CodeChat/.travis.yml.html
+#       Travis CI, Python example (unsupported languages), https://docs.travis-ci.com/user/multi-os/#python-example-unsupported-languages
+#       Kalderimis & Nagy, Windows is Available (Early Release), Oct 10 2018, https://blog.travis-ci.com/2018-10-11-windows-early-release
+#       Miniconda (Python 3) 4.5.11, Chocolatey Gallery, https://chocolatey.org/packages/miniconda3
+#       The Windows Build Environment, https://docs.travis-ci.com/user/reference/windows/
+
+matrix:
+  include:
+    - os : linux
+      language: python
+      python: "3.6"
+    - os : windows
+      # https://blog.travis-ci.com/2018-10-11-windows-early-release
+      language : shell
+      python: "3.6"
+    - os : osx
+      python: "3.6"
+
+before_install:
+  # Obtain miniconda installer
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    elif  [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+    fi
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      bash miniconda.sh -b -p $HOME/miniconda;
+      export PATH="$HOME/miniconda:$HOME/miniconda/bin:$PATH";
+    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      choco install miniconda3 --params="'/AddToPath:1'";
+      export PATH="/c/tools/miniconda3/scripts:/c/tools/miniconda3/:$PATH";
+    fi
+  - hash -r;
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - echo $TRAVIS_OS_NAME
+  - echo $TRAVIS_PYTHON_VERSION
+  - conda env create -n test-environment python=$TRAVIS_PYTHON_VERSION -f [your env yml file path here without brackets];
+  - source activate test-environment
+
+script: 
+  - echo "your test here"
+# notifications:
+#    email:
+#        - [your email addres here without brackets and uncomment lines]
