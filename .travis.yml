@@ -11,14 +11,12 @@ matrix:
       language: python
       python: "3.6"
     - os : windows
-      # https://blog.travis-ci.com/2018-10-11-windows-early-release
       language : shell
       python: "3.6"
     - os : osx
       python: "3.6"
 
 before_install:
-  # Obtain miniconda installer
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     elif  [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
