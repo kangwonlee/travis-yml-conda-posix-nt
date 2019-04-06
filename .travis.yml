@@ -41,6 +41,8 @@ install:
       choco install miniconda3 --params="'/AddToPath:1'";
     fi
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
+  # for conda version 4.4 or later
+  - source $MINICONDA_PATH/etc/profile.d/conda.sh;
   - hash -r;
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
