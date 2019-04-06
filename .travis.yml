@@ -37,11 +37,10 @@ before_install:
 install:
   - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
       bash miniconda.sh -b -p $HOME/miniconda;
-      export PATH="$HOME/miniconda:$HOME/miniconda/bin:$PATH";
     elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       choco install miniconda3 --params="'/AddToPath:1'";
-      export PATH="/c/tools/miniconda3/scripts:/c/tools/miniconda3/:$PATH";
     fi
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   - hash -r;
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
