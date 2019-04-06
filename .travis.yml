@@ -26,7 +26,7 @@ before_install:
       MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
     elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       MINICONDA_PATH=/c/tools/miniconda3/;
-      MINICONDA_PATH_WIN=`cygpath --windows $MINICONDA_PATH`
+      MINICONDA_PATH_WIN=`cygpath --windows $MINICONDA_PATH`;
       MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
     fi;
   # obtain miniconda installer
@@ -40,22 +40,22 @@ install:
   - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
       bash miniconda.sh -b -p $HOME/miniconda;
     elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      choco install openssl.light  # pip will need OpenSSL
+      choco install openssl.light;  # pip will need OpenSSL
       choco install miniconda3 --params="'/AddToPath:1 /D:$MINICONDA_PATH_WIN'";
     fi
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
   # for conda version 4.4 or later
   - source $MINICONDA_PATH/etc/profile.d/conda.sh;
   - hash -r;
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - echo "Python $CONDA_PYTHON running on $TRAVIS_OS_NAME"
+  - conda config --set always_yes yes --set changeps1 no;
+  - conda update -q conda;
+  - echo "Python $CONDA_PYTHON running on $TRAVIS_OS_NAME";
   - conda env create --name test-environment python=$CONDA_PYTHON --file=./tests/environment.${CONDA_PYTHON}.yml;
-  - source activate test-environment
-  - conda --version ; python --version ; pip --version
+  - source activate test-environment;
+  - conda --version ; python --version ; pip --version;
 
 script: 
-  - conda --version && python --version && pip --version
+  - conda --version && python --version && pip --version;
 # notifications:
 #    email:
 #        - [your email addres here without brackets and uncomment lines]
