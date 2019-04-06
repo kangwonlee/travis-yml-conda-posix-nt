@@ -48,10 +48,10 @@ install:
   - hash -r;
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
-  - echo $TRAVIS_OS_NAME
-  - echo $CONDA_PYTHON
+  - echo "Python $CONDA_PYTHON running on $TRAVIS_OS_NAME"
   - conda env create -n test-environment python=$CONDA_PYTHON -f [your env yml file path here without brackets];
   - source activate test-environment
+  - conda --version ; python --version ; pip --version
 
 script: 
   - echo "your test here"
