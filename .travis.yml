@@ -4,6 +4,7 @@
 #       Kalderimis & Nagy, Windows is Available (Early Release), Oct 10 2018, https://blog.travis-ci.com/2018-10-11-windows-early-release
 #       Miniconda (Python 3) 4.5.11, Chocolatey Gallery, https://chocolatey.org/packages/miniconda3
 #       The Windows Build Environment, https://docs.travis-ci.com/user/reference/windows/
+#       Minimal .travis.yml file to run the current Python 3.7 on Linux, macOS, and Windows, https://github.com/cclauss/Travis-CI-Python-on-three-OSes
 
 language : shell
 
