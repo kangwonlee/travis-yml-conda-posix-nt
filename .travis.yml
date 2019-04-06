@@ -5,19 +5,18 @@
 #       Miniconda (Python 3) 4.5.11, Chocolatey Gallery, https://chocolatey.org/packages/miniconda3
 #       The Windows Build Environment, https://docs.travis-ci.com/user/reference/windows/
 
-
 language : shell
-
-os:
-    - linux
-    - windows
-    - osx
 
 env:
   - CONDA_PYTHON=3.6
   - CONDA_PYTHON=3.7
   - CONDA_PYTHON=3.7.1
   - CONDA_PYTHON=nightly
+
+os:
+  - linux
+  - windows
+  - osx
 
 before_install:
   # set conda path info
