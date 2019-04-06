@@ -55,7 +55,7 @@ install:
   - conda --version ; python --version ; pip --version
 
 script: 
-  - echo "your test here"
+  - conda --version && python --version && pip --version
 # notifications:
 #    email:
 #        - [your email addres here without brackets and uncomment lines]
