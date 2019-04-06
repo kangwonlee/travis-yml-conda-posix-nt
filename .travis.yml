@@ -51,6 +51,7 @@ install:
   - echo $CONDA_PYTHON
   - conda env create -n test-environment python=$CONDA_PYTHON -f [your env yml file path here without brackets];
   - source activate test-environment
+  - conda --version ; python --version ; pip --version
 
 script: 
   - echo "your test here"
