@@ -16,3 +16,18 @@
 * As CI may execute a number of tasks such as building, testing, and merging several times a day, certain level of automation is desirable.
 
 * For example, [Jenkins](https://en.wikipedia.org/wiki/Jenkins_(software)), an [open source](https://github.com/jenkinsci/jenkins) project, can be employed to automate the CI/[CD](https://en.wikipedia.org/wiki/Continuous_delivery).
+
+### What is the [Travis-CI.org](https://travis-ci.org)?
+
+* Also from the Wikipedia:
+> Travis-CI is a hosted CI service used to build and test software project hosted at GitHub.
+
+* The company HQ is located in Berlin, Germany.
+
+### What is the `.travis.yml` file?
+
+* When a developer `git push`s to a Travis-CI-enabled GitHub repository, Travis-CI would build and test the software.
+
+* Travis-CI would search for this `.travis-ci.yml` file at the root of the repository.
+
+* This `.travis-ci.yml` file would describe the procedures to build and test the software.
