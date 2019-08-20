@@ -30,4 +30,17 @@
 
 * Travis-CI would search for this `.travis-ci.yml` file at the root of the repository.
 
-* This `.travis-ci.yml` file would describe the procedures to build and test the software.
+* This `.travis-ci.yml` file would describe the [procedures](https://docs.travis-ci.com) to build and test the software.
+
+* `.yml` means [YAML format](https://en.wikipedia.org/wiki/YAML).
+
+## Separate shell script files
+
+* One possible way to simplify the `.travis.yml` file is to write several [shell script](https://linuxcommand.org/lc3_writing_shell_scripts.php) files describing subsections of the procedure : `before_install`, `install`, and `script`
+
+* For example, to run a `my_before_install.sh` file, one may consider adding following lines to the `.travis.yml` file.
+
+``` yaml
+before_install:
+  - . my_before_install.sh
+```
