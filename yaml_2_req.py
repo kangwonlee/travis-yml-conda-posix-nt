@@ -21,8 +21,10 @@ def main(argv=sys.argv):
 
         req_txt = yaml_to_req(yaml_txt)
 
+        req_filename = os.path.splitext(yaml_filename)[0] + '.txt'
+
         if not ns.dry_run:
-            with open(os.path.join(ns.req, yaml_filename), 'wt') as req_fp:
+            with open(os.path.join(ns.req, req_filename), 'wt') as req_fp:
                 req_fp.write(req_txt)
         else:
             print('## write to', os.path.join(ns.req, yaml_filename))
