@@ -44,3 +44,9 @@
 before_install:
   - . my_before_install.sh
 ```
+
+## Recommendation
+
+* Also consider using `pip install --requirement <file>` [[ref](https://pip.pypa.io/en/stable/reference/pip_install/)]
+* This repo includes a simple (untested) python script converting `conda` recipe yaml files to `pip` requirement files
+* At first, please start small
