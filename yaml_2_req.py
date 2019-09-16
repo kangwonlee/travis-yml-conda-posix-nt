@@ -9,7 +9,20 @@ import yaml
 
 
 def main(argv=sys.argv):
-    pass
+    p = get_argparse()
+
+    ns = p.parse_args(argv[1:])
+
+    os.makedirs(ns.req, exist_ok=True)
+
+    for yaml_filename in os.listdir(ns.yaml):
+        with open(os.path.join(ns.yaml, yaml_filename), 'rt') as yaml_fp:
+            yaml_txt = yaml_fp.read()
+
+        req_txt = yaml_to_req(yaml_txt)
+
+        with open(os.path.join(ns.req, yaml_filename), 'wt') as req_fp:
+            req_fp.write(req_txt)
 
 
 def get_argparse():
