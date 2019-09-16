@@ -29,8 +29,8 @@ def get_argparse():
     p = argparse.ArgumentParser()
 
     p.add_argument('--yaml', type=str, default='tests', help='folder')
-
     p.add_argument('--req', type=str, default='req', help='folder')
+    p.add_argument('--dry-run', default=False, action='store_true')
 
     return p
 
