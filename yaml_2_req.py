@@ -21,8 +21,12 @@ def main(argv=sys.argv):
 
         req_txt = yaml_to_req(yaml_txt)
 
-        with open(os.path.join(ns.req, yaml_filename), 'wt') as req_fp:
-            req_fp.write(req_txt)
+        if not ns.dry_run:
+            with open(os.path.join(ns.req, yaml_filename), 'wt') as req_fp:
+                req_fp.write(req_txt)
+        else:
+            print('## write to', os.path.join(ns.req, yaml_filename))
+            print(req_txt)
 
 
 def get_argparse():
