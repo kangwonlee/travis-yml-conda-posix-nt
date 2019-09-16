@@ -52,7 +52,7 @@ def yaml_to_req(yaml_txt):
     if 'channels' in p:
         req_txt += "# channels :\n"
         for ch in p['channels']:
-            req_txt += f"# {ch}\n"
+            req_txt += f"#\t{ch}\n"
 
     for lib in p['dependencies']:
         if '>=' in lib:
