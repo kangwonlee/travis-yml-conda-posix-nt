@@ -55,7 +55,25 @@ def yaml_to_req(yaml_txt):
             req_txt += f"# {ch}\n"
 
     for lib in p['dependencies']:
-        lib_replaced = re.sub(r'\w(\=)\d', ' == ', lib)
+        if '>=' in lib:
+            lib_replaced = lib.replace('>=', ' >= ')
+        elif '<=' in lib:
+            lib_replaced = lib.replace('<=', ' <= ')
+        elif '==' in lib:
+            lib_replaced = lib.replace('==', ' == ')
+        elif '!=' in lib:
+            lib_replaced = lib.replace('!=', ' != ')
+        elif '~=' in lib:
+            lib_replaced = lib.replace('~=', ' ~= ')
+        elif '>' in lib:
+            lib_replaced = lib.replace('>', ' > ')
+        elif '<' in lib:
+            lib_replaced = lib.replace('<', ' < ')
+        elif '=' in lib:
+            lib_replaced = lib.replace('=', ' == ')
+        else:
+            lib_replaced = lib
+
         req_txt += f"{lib_replaced}\n"
 
     return req_txt
